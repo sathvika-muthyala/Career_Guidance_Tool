@@ -23,7 +23,7 @@ nlp = spacy.load("en_core_web_md")
 
 # AI Chatbot Integration (Using Free Hugging Face API)
 HF_API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.3"
-HEADERS = {"Authorization": "Bearer "}  # 🔹 Get a free API key from Hugging Face
+HEADERS = {"Authorization": "Bearer "}  # Get a free API key from Hugging Face
 
 def chat_with_ai(user_input):
     """Calls Hugging Face API for more accurate responses."""
@@ -34,7 +34,7 @@ def chat_with_ai(user_input):
     return "Sorry, I couldn't process your request."
 
 # AI Chatbot UI in Sidebar
-st.sidebar.title("🤖 AI Career Chatbot")
+st.sidebar.title("AI Career Chatbot")
 st.sidebar.write("Ask me anything about job roles, skills, salaries!")
 
 if "messages" not in st.session_state:
@@ -162,10 +162,9 @@ def plot_job_demand_trends(df):
         all_jobs = postings['Job_Title'].unique()
         selected_jobs = st.multiselect("Select Job Roles to Display:", all_jobs, default=all_jobs[:10])
 
-        # **🔹 Filter data based on user-selected job titles**
+        # Filter data based on user-selected job titles
         filtered_data = postings[postings['Job_Title'].isin(selected_jobs)]
 
-        # **🔹 Debugging: Print filtered data sample**
         st.write("Filtered Data Sample:", filtered_data.head())
 
         # Check if any selected jobs have no data
@@ -269,7 +268,6 @@ if st.checkbox("Show Enhanced EDA Analysis"):
     plot_job_demand_trends(df)
     plot_geographic_distribution(df)
 
-# User Inputs
 # User Inputs
 user_skills = st.text_area("Enter your current skills (comma-separated)", "").lower()
 job_role = st.selectbox("Select your dream job role", df["Job_Title"].unique())
