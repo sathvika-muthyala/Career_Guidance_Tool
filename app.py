@@ -28,7 +28,7 @@ spacy.cli.download("en_core_web_md")
 nlp = spacy.load("en_core_web_md")
 
 load_dotenv()  # Load the .env file
-
+HF_API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.3"
 HF_API_KEY = os.getenv("HF_API_KEY")
 
 print(f"HF_API_KEY: {HF_API_KEY}")  # This should print the API key if loaded correctly
