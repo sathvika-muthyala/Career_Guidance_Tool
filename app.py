@@ -18,12 +18,26 @@ import plotly.express as px
 import pandas as pd
 import streamlit as st
 import itertools
+from dotenv import load_dotenv
+import os
+import nltk
+import spacy
+
 nltk.download('punkt')
+spacy.cli.download("en_core_web_md")
 nlp = spacy.load("en_core_web_md")
 
-# AI Chatbot Integration (Using Free Hugging Face API)
-HF_API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.3"
-HEADERS = {"Authorization": "Bearer "}  # Get a free API key from Hugging Face
+load_dotenv()  # Load the .env file
+
+HF_API_KEY = os.getenv("HF_API_KEY")
+
+print(f"HF_API_KEY: {HF_API_KEY}")  # This should print the API key if loaded correctly
+
+if not HF_API_KEY:
+    raise ValueError("HF_API_KEY environment variable not set!")
+    
+HEADERS = {"Authorization": "Bearer " + HF_API_KEY}
+
 
 def chat_with_ai(user_input):
     """Calls Hugging Face API for more accurate responses."""
